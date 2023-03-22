@@ -12,7 +12,7 @@ public class Multimetro{
         for(double num : volts)
             media += num;
         media /= numElements;
-        System.out.println("\nMedia: " + media);
+        System.out.println("Media: " + media);
         
         // Cálculo do desvio padrão
         double dp = 0;
