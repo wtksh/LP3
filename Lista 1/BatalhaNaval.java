@@ -21,7 +21,7 @@ public class BatalhaNaval{
 
             for (int player = 0; player < PLAYERS_NUM; player++){
                 System.out.println("\nPLAYER " + (player+1) + ", ENTER YOUR SHIP'S COORDINATES");
-                for (int ship = 0; ship < SHIPS_NUM; ship++)
+                for (int ship = 0; ship < SHIPS_NUM; ship++){
                     while(true){
                         System.out.println("Enter ship " + (ship+1) + " location:");
                         coordinates[ship][0] = scanner.nextInt();
@@ -34,17 +34,11 @@ public class BatalhaNaval{
                                 System.out.println("You already have a ship there. Choose different coordinates.");
                         else
                             System.out.println("Invalid coordinates. Choose different coordinates.");
-
-                        
-                        
-                        
                     }
                 }
             }       
-                        
-            
-                
         }
+    }
     
 
     public static boolean differentCoords(int[][] coordinates, int ship){
