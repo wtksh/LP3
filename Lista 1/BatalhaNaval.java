@@ -9,15 +9,8 @@ public class BatalhaNaval{
         try (Scanner scanner = new Scanner(System.in)){
             System.out.println("Welcome to Battleship!!!");
 
-            String[][] board = {{" ", "1", "2", "3", "4", "5"},
-                                {"1", "-", "-", "-", "-", "-"},
-                                {"2", "-", "-", "-", "-", "-"},
-                                {"3", "-", "-", "-", "-", "-"},
-                                {"4", "-", "-", "-", "-", "-"},
-                                {"5", "-", "-", "-", "-", "-"}};
-
+            char[][] board = generateBoard(5);
             int[][] coordinates = new int[SHIPS_NUM][2];
-            
 
             for (int player = 0; player < PLAYERS_NUM; player++){
                 System.out.println("\nPLAYER " + (player+1) + ", ENTER YOUR SHIP'S COORDINATES");
@@ -40,15 +33,36 @@ public class BatalhaNaval{
         }
     }
     
+    /* Gera uma matriz-tabuleiro de tamanho (size)x(size). Caso (size) seja menor que 0 ou maior que 9, retornará um erro. */
+    public static char[][] generateBoard(int size){
+        if (size < 1 || size > 9){
+            System.out.println("Error: Size must be between 1 and 9. Returning empty array.");
+            return null;
+        }
 
+        char[][] board = new char[size + 1][size + 1];
+        board[0][0] = '*';
+
+        for (int i = 1; i <= size; i++){
+            board[0][i] = (char)(i + '0');
+            board[i][0] = (char)(i + '0');
+            for (int j = 1; j <= size; j++) 
+                board[i][j] = '-';
+        }
+        return board;
+    }
+
+    /* Verifica se a coordenada atual é igual a alguma coordenada inserida anteriormente. */
     public static boolean differentCoords(int[][] coordinates, int ship){
-        if (ship == 0)
+        if (ship == 0) 
             return true;
         for (int i = 0; i < ship; i++)
             if (coordinates[i][0] == coordinates[ship][0] && coordinates[i][1] == coordinates[ship][1])
                 return false;
         return true;
     }
+
+    
 
 
 
