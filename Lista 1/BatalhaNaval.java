@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class BatalhaNaval{
     static final int PLAYERS_NUM = 2;
+    static final int SHIPS_NUM = 5;
     static final int BOARD_SIZE = 5;
 
     public static void main(String[] args){
@@ -15,21 +16,19 @@ public class BatalhaNaval{
                                 {"4", "-", "-", "-", "-", "-"},
                                 {"5", "-", "-", "-", "-", "-"}};
 
-            int[][] coordinates = new int[BOARD_SIZE][2];
+            int[][] coordinates = new int[SHIPS_NUM][2];
             
 
             for (int player = 0; player < PLAYERS_NUM; player++){
                 System.out.println("\nPLAYER " + (player+1) + ", ENTER YOUR SHIP'S COORDINATES");
-                for (int i = 0; i < BOARD_SIZE; i++)
+                for (int ship = 0; ship < SHIPS_NUM; ship++)
                     while(true){
-                        System.out.println("Enter ship " + (i+1) + " location:");
-                        coordinates[i][0] = scanner.nextInt();
-                        coordinates[i][1] = scanner.nextInt();
+                        System.out.println("Enter ship " + (ship+1) + " location:");
+                        coordinates[ship][0] = scanner.nextInt();
+                        coordinates[ship][1] = scanner.nextInt();
 
-                        
-                        
-                        if (coordinates[i][0] > 0 && coordinates[i][0] <= BOARD_SIZE && coordinates[i][1] > 0 && coordinates[i][1] <= BOARD_SIZE)
-                            if (differentCoords(coordinates, i))
+                        if (coordinates[ship][0] > 0 && coordinates[ship][0] <= BOARD_SIZE && coordinates[ship][1] > 0 && coordinates[ship][1] <= BOARD_SIZE)
+                            if (differentCoords(coordinates, ship))
                                 break;
                             else
                                 System.out.println("You already have a ship there. Choose different coordinates.");
@@ -48,11 +47,11 @@ public class BatalhaNaval{
         }
     
 
-    public static boolean differentCoords(int[][] coordinates, int row){
-        if (row == 0)
+    public static boolean differentCoords(int[][] coordinates, int ship){
+        if (ship == 0)
             return true;
-        for (int i = 0; i < row ; i++)
-            if (coordinates[i][0] == coordinates[row][0] && coordinates[i][1] == coordinates[row][1])
+        for (int i = 0; i < ship; i++)
+            if (coordinates[i][0] == coordinates[ship][0] && coordinates[i][1] == coordinates[ship][1])
                 return false;
         return true;
     }
