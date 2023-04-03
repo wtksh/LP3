@@ -1,5 +1,5 @@
-import java.lang.Math;
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Multimetro{
     // Numero de amostras
