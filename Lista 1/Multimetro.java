@@ -16,16 +16,16 @@ public class Multimetro{
             double[] volts = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
             // Amostra de dados
-            System.out.print("\nAmosta de Volts: ");
+            System.out.print("\nAmostra de Volts: ");
             for(double num : volts)
                 System.out.print(num + ", ");
 
             // Cálculo da media
-            double media = calcularMedia(volts);
+            double media = calcularMedia(volts, NUM_AMOSTRAS);
             System.out.println("\nMedia: " + media);
             
             // Cálculo do desvio padrão
-            double desvioPadrao = calcularDesvioPadrao(volts, media);
+            double desvioPadrao = calcularDesvioPadrao(volts, media, NUM_AMOSTRAS);
             System.out.println("Desvio Padrão: " + desvioPadrao);
             
             // Situação do multímetro
@@ -33,17 +33,17 @@ public class Multimetro{
         }
     }
 
-    public static double calcularMedia(double[] amostras){
+    public static double calcularMedia(double[] amostras, int numAmostras){
         double soma = 0;
         for(double amostra : amostras)
             soma += amostra;
-        return soma/NUM_AMOSTRAS;
+        return soma/numAmostras;
     }
 
-    public static double calcularDesvioPadrao(double[] amostras, double media){
+    public static double calcularDesvioPadrao(double[] amostras, double media, int numAmostras){
         double soma = 0;
         for(double amostra : amostras)
             soma += Math.pow(amostra - media, 2);
-        return Math.sqrt(soma/NUM_AMOSTRAS);
+        return Math.sqrt(soma/numAmostras);
     }
 }   
