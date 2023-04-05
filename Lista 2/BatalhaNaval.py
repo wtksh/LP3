@@ -16,7 +16,7 @@ def printBoard(board):
 def main():
     PLAYERS_NUM = 2
     BOARD_SIZE = 5
-    SHIPS_NUM = 3
+    SHIPS_NUM = 5
 
     print('Welcome to the Battleship!!!')
 
