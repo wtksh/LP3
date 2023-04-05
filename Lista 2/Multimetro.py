@@ -1,5 +1,3 @@
-NUM_AMOSTRAS = 5
-
 def calcularMedia(lista):
     return sum(lista)/len(lista)
     
@@ -8,6 +6,8 @@ def calcularDesvioPadrao(lista, media):
     return sqrt(sum((numero - media)**2 for numero in lista)/len(lista))
     
 def main():
+    NUM_AMOSTRAS = 5
+    
     # Entrada de dados por teclado
     # amostras = []
     # i = 0
