@@ -1,0 +1,26 @@
+modelo Linha2D
+início do modelo
+    dado ponto1, ponto2, comprimento;
+
+    operação novaLinha2D(umPonto1, umPonto2);
+        início
+            ponto1 = umPonto1;
+            ponto2 = umPonto2;
+        fim
+
+    operação calcularComprimento()
+        início
+            comprimento = raizQuadrada((ponto1.x - ponto2.x) * (ponto1.x - ponto2.x) + (ponto1.y - ponto2.y) * (ponto1.y - ponto2.y))
+        fim
+
+    operação mostraLinha()
+        início
+            imprime "Ponto1: ";
+            imprime ponto1;
+            imprime "Ponto2: ";
+            imprime ponto2;
+            imprime "Comprimento: ";
+            imprime comprimento;
+        fim
+
+fim do modelo            

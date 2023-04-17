@@ -1,0 +1,19 @@
+modelo Ponto2D
+início do modelo
+    dado x, y;
+
+    operação novoPonto2D(x1, y1)
+        início
+            x = x1;
+            y = y1;
+        fim
+    
+    operação mostraPonto()
+        início
+            imprime "Coordenada X: ";
+            imprime x;
+            imprime "Coordenada Y: ";
+            imprime y;
+        fim
+
+fim do modelo

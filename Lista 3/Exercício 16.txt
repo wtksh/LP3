@@ -1,0 +1,75 @@
+modelo Data
+início do modelo
+    dado dia, mês, ano, diaDaSemana;
+
+    operação inicializaData(umDia, umMês, umAno)
+        início
+            se dataÉVálida(umDia, umMês, umAno)
+                início
+                    dia = umDia;
+                    mês = umMês;
+                    ano = umAno;
+                fim
+            senão
+                início
+                    dia = 0;
+                    mês = 0;
+                    ano = 0;      
+                fim
+        fim
+
+    operação dataÉVálida(umDia, umMês, umAno)
+        início
+            se (((umMês == 1) ou (umMês == 3) ou (umMês == 5) ou (umMês == 7) ou (umMês == 8) ou (umMês == 10) ou (umMês == 12)))
+                início
+                    se ((umDia >= 1) e (umDia <= 31))
+                        retorna verdadeiro;
+                    senão
+                        retorna falso;
+                fim
+
+            se ((umMês == 2) ou (umMês == 4) ou (umMês == 6) ou (umMês == 9) ou (umMês == 11))
+                início
+                    se ((umDia >= 1) e (umDia <= 30))
+                        retorna verdadeiro;
+                    senão
+                        retorna falso;
+                fim
+            
+            se (umMês == 2)
+                início
+                    se (((umAno % 4 == 0) e (umAno % 100 != 0)) ou (umAno % 400 == 0))
+                        início
+                            se ((umDia >= 1) e (umDia <= 29))
+                                retorna verdadeiro;
+                            senão
+                                retorna falso;
+                        fim
+                    senão
+                        início
+                            se ((umDia >= 1) e (umDia <= 28))
+                                retorna verdadeiro;
+                            senão
+                                retorna falso;
+                        fim
+                fim
+            
+            senão
+                retorna falso;
+        fim
+
+    operação diaDaSemana(umDia, umMês, umAno)
+        início
+            se (dataÉVálida(umDia, umMês, umAno))
+                início
+                    Y = ano - ((14 - umMês)/12)
+                    M = umMês + 12 * ((14 - umMês)/12)
+                    diaDaSemana = (umDia + Y + Y/4 - Y/100 + Y/400 + 31*M/12) % 7 + 1
+
+                    retorna diaDaSemana;
+                fim
+            senão
+                retorna 0;
+        fim
+
+fim do modelo

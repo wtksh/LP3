@@ -1,0 +1,34 @@
+modelo Retângulo
+início do modelo
+    dado ponto1, ponto2, área, perímetro;
+
+    operação novoRetângulo(umPonto1, umPonto2)
+        início
+            ponto1 = umPonto1;
+            ponto2 = umPonto2;
+        fim
+
+    operação calcularÁrea()
+        início
+            área = (ponto1.x - ponto2.x) * (ponto1.y - ponto2.y)
+        fim
+
+    operação calcularPerímetro()
+        início
+            perímetro = 2 * (ponto1.x - ponto2.x) + 2 * (ponto1.y - ponto2.y)
+        fim
+
+    operação mostraDados()
+        início
+            imprime "Ponto 1: ";
+            imprime ponto1;
+            imprime "Ponto 2: ";
+            imprime ponto2;
+            imprime "Área: ";
+            imprime área;
+            imprime "Perímetro: ";
+            imprime perímetro;
+        fim
+        
+fim do modelo
+            
