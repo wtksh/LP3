@@ -1,0 +1,33 @@
+modelo LivroDeLivraria
+início do modelo
+    dado preço, quantidadeEstoque;
+
+    operação ajustaPreço(valor)
+        início
+            preço = valor;
+        fim
+
+    operação aplicaDesconto(percentual)
+        início
+            preço = preço * (100 - percentual);
+        fim          
+    
+    operação adicionaEstoque(quantidade)
+        início
+            quantidadeEstoque = quantidadeEstoque + quantidade;
+        fim
+
+    operação removeEstoque(quantidade)
+        início
+            quantidadeEstoque = quantidadeEstoque - quantidade;
+        fim
+
+    operação mostraDados()
+        início
+            imprime "Preço do livro: ";
+            imprime preço;
+            imprime "Quantidade em estoque: ";
+            imprime quantidadeEstoque;
+        fim
+
+fim do modelo

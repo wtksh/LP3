@@ -1,0 +1,43 @@
+modelo HoraPrecisa
+início do modelo
+    dado horas, minutos, segundos, centésimos;
+
+    operação horaÉVálida(umaHora, umMinuto, umSegundo, umCentésimo)
+        início
+            se ((umCentésimo >=0) e (umCentésimo < 10) e (umSegundo >= 0) e (umSegundo < 60) e (umMinuto >= 0) e (umMinuto < 60) e (umaHora >=0) e (umaHora < 24))
+                retorna verdadeiro;
+            senão
+                retorna falso;
+        fim
+
+    operação inicializaHora(umaHora, umMinuto, umSegundo, umCentésimo)
+        início
+            se horaÉVálida(umaHora, umMinuto, umSegundo, umCentésimo)
+                início
+                    horas = umaHora;
+                    minutos = umMinuto;
+                    segundos = umSegundo;
+                    centésimos = umCentésimo;
+                fim
+            senão
+                início
+                    horas = 00;
+                    minutos = 00;
+                    segundos = 00;
+                    centésimos = 00;
+                fim
+        fim
+
+    operação mostraHoraPrecisa()
+        início
+            imprime horas;
+            imprime "horas, ";
+            imprime minutos;
+            imprime "minutos, ";
+            imprime segundos;
+            imprime "segundos e ";
+            imprime centésimos;
+            imprime "centésimos.";
+        fim
+
+fim do modelo

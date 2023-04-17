@@ -1,0 +1,28 @@
+modelo Livro
+início do modelo
+    dado título, autor, editora, anoPublicado, númeroDePáginas;
+
+    operação registrarLivro(umTítulo, umAutor, umaEditora, umAnoPublicado, umNúmeroDePáginas)
+        início
+            título = umTítulo;
+            autor = umAutor;
+            editora = umEditora;
+            anoPublicado = umAnoPublicado;
+            númeroDePáginas = umNúmeroDePáginas;
+        fim
+
+    operação mostraLivro()
+        início
+            imprime "Título: ";
+            imprime título;
+            imprime "Autor: ";
+            imprime autor;
+            imprime "Editora: ";
+            imprime editora;
+            imprime "Ano Publicado: ";
+            imprime anoPublicado;
+            imprime "Número de páginas: ";
+            imprime númeroDePáginas;
+        fim
+    
+fim do modelo

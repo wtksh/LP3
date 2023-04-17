@@ -1,0 +1,47 @@
+modelo LivroDeBiblioteca
+início do modelo
+    dado quantidadeLivros, quantidadeLivrosDisponíveis;
+
+    operação adicionaLivro(quantidade)
+        início
+            quantidadeLivros = quantidadeLivros + quantidade;
+        fim
+
+    operação removeLivro(quantidade)
+        início
+            quantidadeLivros = quantidadeLivros - quantidade;
+        fim
+
+    operação emprestaLivro()
+        início
+            se háLivros();
+                quantidadeLivrosDisponíveis = quantidadeLivrosDisponíveis - 1;
+            senão
+                imprime "Não há livros disponíveis para emprestar.";
+        fim
+
+    operação devolveLivro()
+        início
+            se (quantidadeLivrosDisponíveis == quantidadeLivros)
+                imprime "Não há nenhum livro para ser devolvido."
+            senão
+                quantidadeLivrosDisponíveis = quantidadeLivrosDisponíveis + 1;
+        fim
+
+    operação háLivros()
+        início
+            se (quantidadeLivrosDisponíveis > 0)
+                retorna verdadeiro;
+            senão
+                retorna falso;
+        fim
+
+    operação mostraDados()
+        início
+            imprime "Quantidade de livros:";
+            imprime quantidadeLivros;
+            imprime "Quantidade disponível para emprestar: ";
+            imprime quantidadeLivrosDisponíveis;
+        fim
+
+fim do modelo

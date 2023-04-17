@@ -1,0 +1,17 @@
+modelo LampadaAjustavel
+início do modelo
+    dado luminosidade;
+
+    operação ajustarLuminosidade(percentual)
+        início
+            se ((percentual >= 0) e (percentual <= 100))
+                luminosidade = percentual
+        fim
+
+    operação mostraLuminosidade()
+        início
+            imprime "Luminosidade percentual da lampada: ";
+            imprime luminosidade;
+        fim
+
+fim do modelo
