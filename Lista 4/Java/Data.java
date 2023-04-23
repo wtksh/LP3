@@ -1,7 +1,14 @@
 public class Data{
-    private int dia = 0;
-    private int mes = 0;
-    private int ano = 0;
+    private int dia;
+    private int mes;
+    private int ano;
+
+    // Construtor
+    public Data(int dia, int mes, int ano){
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
+    }
 
     // Verificar data
     private boolean verificarData(int dia, int mes, int ano){
@@ -18,15 +25,6 @@ public class Data{
         
         return true;
     }
-    
-    // Inicializar data
-    public void inicializarData(int dia, int mes, int ano){
-        if (verificarData(dia, mes, ano)){
-            this.dia = dia;
-            this.mes = mes;
-            this.ano = ano;
-        }
-    }
 
     // Imprime data
     public void imprimirData(){
@@ -35,7 +33,7 @@ public class Data{
     
     // Imprime data extenso
     public void imprimirDataExtenso(){
-        String[] meses = {"-----", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+        String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
         System.out.printf("%02d de %s de %04d\n", dia, meses[mes], ano);
     }
 
@@ -66,5 +64,17 @@ public class Data{
     public void setAno(int ano){
         if (verificarData(dia, mes, ano))
             this.ano = ano;
+    }
+
+    public static void main(String[] args){
+        Data data = new Data(1, 5, 2023);
+        data.imprimirData();
+        data.imprimirDataExtenso();
+
+        data.setAno(2000);
+        data.setMes(2);
+        data.setDia(29);
+
+        System.out.printf("%d, %d, %d", data.getDia(), data.getMes(), data.getAno());
     }
 }
