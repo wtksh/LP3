@@ -1,8 +1,9 @@
 class Data:
-    def __init__(self):
-        self.__dia = 0
-        self.__mes = 0
-        self.__ano = 0
+    def __init__(self, dia = 0, mes = 0, ano = 0):
+        if self.__verificar_data(dia, mes, ano):
+            self.__dia = dia
+            self.__mes = mes
+            self.__ano = ano
 
     # Imprimir data
     def __str__(self):
@@ -12,13 +13,6 @@ class Data:
     def extenso(self):
         meses = ["-----", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
         return f"{self.__dia:02} de {meses[self.__mes]} de {self.__ano:04}"
-    
-    # Inicializar data
-    def inicializar_data(self, dia, mes, ano):      
-        if self.__verificar_data(dia, mes, ano):
-            self.__dia = dia
-            self.__mes = mes
-            self.__ano = ano
     
     # Verificar data
     def __verificar_data(self, dia, mes, ano):
@@ -65,9 +59,8 @@ class Data:
 
 
 if __name__ == "__main__":
-    data = Data()
+    data = Data(26, 4, 2023)
 
-    data.inicializar_data(26, 4, 2023)
     print('Teste 1: ', data)
     print('Teste 2: ', data.extenso())
 
