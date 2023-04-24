@@ -27,7 +27,7 @@ class Lampada:
         if self.__luminosidade:
             print(f"A lâmpada está com {self.__luminosidade}% de sua luminosidade total.")
         else:
-            print("A lâmpada está desligada.")
+            print("A lâmpada está apagada.")
 
     def esta_ligada(self):
         if self.__luminosidade:

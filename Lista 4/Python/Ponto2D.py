@@ -1,3 +1,5 @@
+from math import sqrt
+
 class Ponto2D:
     def __init__(self, x = 0, y = 0):
         self.__x = x
@@ -53,7 +55,6 @@ class Ponto2D:
                 return 3
             
     def distancia(self, Ponto2D):
-        from math import sqrt
         distancia = sqrt((Ponto2D.x - self.__x)**2 + (Ponto2D.y - self.__y)**2)
         return distancia
 

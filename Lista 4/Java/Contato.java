@@ -1,13 +1,14 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Contato {
     private String nome;
     private String email;
     private String telefone;
-    private Data dataNascimento;
+    private LocalDate dataNascimento;
 
-    // Construtor
-    public void inicializarContato(String nome, String email, String telefone, Data dataNascimento){
+    // Inicializar contato
+    public void inicializarContato(String nome, String email, String telefone, LocalDate dataNascimento){
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -19,13 +20,12 @@ public class Contato {
         System.out.println("Nome: " + nome);
         System.out.println("Email: " + email);
         System.out.println("Telefone: " + telefone);
-        System.out.println("Data de Nascimento: " + dataNascimento.getDia() + "/" + dataNascimento.getMes() + "/" + dataNascimento.getAno());
+        System.out.println("Data de Nascimento: " + DateTimeFormatter.ofPattern("dd/MM/yyyy").format(dataNascimento));
     }
 
     // Calcular idade
     public int calcularIdade(){
         LocalDate dataHoje = LocalDate.now();
-        LocalDate dataNascimento = LocalDate.of(this.dataNascimento.getAno(), this.dataNascimento.getMes(), this.dataNascimento.getDia());
         int idade = dataHoje.getYear() - dataNascimento.getYear();
 
         if (dataHoje.getMonthValue() < dataNascimento.getMonthValue()
@@ -48,7 +48,7 @@ public class Contato {
         return telefone;
     }
     
-    public Data getDataNascimento(){
+    public LocalDate getDataNascimento(){
         return dataNascimento;
     }
 
@@ -65,26 +65,22 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public void setDataNascimento(Data dataNascimento){
+    public void setDataNascimento(LocalDate dataNascimento){
         this.dataNascimento = dataNascimento;
     }
 
 
     public static void main(String[] args){
         Contato contato = new Contato();
-        Data dataNascimento = new Data(1, 5, 2000);
-        contato.inicializarContato("Fulano", "fulano@email.com", "73999999999", dataNascimento);
+        contato.inicializarContato("Fulano", "fulano@email.com", "73999999999", LocalDate.of(2000, 5, 25));
         contato.imprimirContato();
 
         contato.setNome("Ciclano");
         contato.setEmail("ciclano@email.com");
         contato.setTelefone("73888888888");
-        contato.setDataNascimento(new Data(29, 2, 2000));
         
-        System.out.printf("%s\n%s\n%s\n", contato.getNome(), contato.getEmail(), contato.getTelefone());
-        contato.getDataNascimento().imprimirData();
-
-        System.out.println(calcularIdade());
+        System.out.printf("%s, %s, %s, %s", contato.getNome(), contato.getEmail(), contato.getTelefone(), contato.getDataNascimento());
+        System.out.println(contato.calcularIdade());
     }
     
 }
