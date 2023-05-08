@@ -77,7 +77,7 @@ class Data:
                 else:
                     return False
 
-    def howManyDays2(self, data: "Data"):
+    def howManyDays(self, data: "Data"):
         i = 0
         dias_por_mes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         if data.isPrevious(self):
@@ -125,4 +125,4 @@ if __name__ == "__main__":
 
     print("data1 < data2 ?", data2.isPrevious(data1))
 
-    print(data1.howManyDays2(data2))
+    print(data1.howManyDays(data2))

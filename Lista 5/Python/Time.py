@@ -9,7 +9,7 @@ class Time:
         self.__seg = seg
 
     def __str__(self):
-        return f"{self.__hora}:{self.__min}:{self.__seg}"
+        return f"{self.__hora:02}:{self.__min:02}:{self.__seg:02}"
 
     # Getters
     @property
@@ -62,7 +62,7 @@ class Time:
         return self.__hora < 12
     
     def cron(self, time: "Time"):
-        seg = time.__timeToSec() - self.__timeToSec()
+        seg = self.__timeToSec() - time.__timeToSec()
         if seg < 0:
             seg += 24*3600
         return seg
@@ -71,12 +71,24 @@ class Time:
         self.__hora += seg//3600
         self.__min += (seg%3600)//60
         self.__seg += (seg%3600)%60
+
+        if self.__seg > 59:
+            self.__seg -= 60
+            self.__min += 1
+
+        if self.__min > 59:
+            self.__min -= 60
+            self.__hora += 1
+
+        if self.__hora > 23:
+            self.__hora -= 24
+
  
 if __name__ == "__main__":
-    tempo1 = Time(11, 0, 0)
+    tempo1 = Time(22, 59, 59)
     tempo2 = Time(12, 0, 15)
 
     print(tempo2.isAm())
     print(tempo1.cron(tempo2))
-    tempo1.addSeconds(3600)
+    tempo1.addSeconds(3601)
     print(tempo1)
