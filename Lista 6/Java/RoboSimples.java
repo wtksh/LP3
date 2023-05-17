@@ -1,5 +1,5 @@
 public class RoboSimples {
-    private  String nomeDoRobo;
+    private String nomeDoRobo;
     private int posicaoXAtual, posicaoYAtual;
     private String direcaoAtual;
 
@@ -26,9 +26,9 @@ public class RoboSimples {
     }
     
     private boolean validaNome(String nome){
-        if(!nome.isEmpty())
-            return true;
-        throw new IllegalArgumentException("Invalid name");
+        if(nome.isEmpty() || nome.isBlank())
+            throw new IllegalArgumentException("Invalid name");
+        return true;
     }
 
     private boolean validaDirecao(String direcao){
@@ -103,6 +103,14 @@ public class RoboSimples {
         str = str + "Direcao do robo: "+direcaoAtual;
 
         return str;
+    }
+
+    public static void main (String[] args) {
+        RoboSimples robo = new RoboSimples("EVE", 0, 0, "NL");
+
+        robo.move();
+        System.out.println(robo.toString());
+
     }
 
 }
