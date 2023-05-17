@@ -2,13 +2,15 @@ public class RoboSimples {
     private String nomeDoRobo;
     private int posicaoXAtual, posicaoYAtual;
     private String direcaoAtual;
+    private static RoboSimples[] listaDeRobos = new RoboSimples[0];
 
     RoboSimples(String nome, int px, int py, String d){
-        validaRobo(nome, d);
+        validaRobo(nome, px, py, d);
         nomeDoRobo = nome;
         posicaoXAtual = px;
         posicaoYAtual = py;
         direcaoAtual = d;
+        listaDeRobos = addInList();
     }
 
     RoboSimples(String nome){
@@ -19,8 +21,37 @@ public class RoboSimples {
         this("Wally");
     }
 
-    private boolean validaRobo(String nome, String novaDirecao){
-        if(validaNome(nome) && validaDirecao(novaDirecao))
+    // Adiciona robo na listaDeRobos
+    private RoboSimples[] addInList() {
+        int cont = 0;
+
+        for (int i = 0; i < listaDeRobos.length; i++) {
+            cont++;
+        }
+
+        RoboSimples[] lista = new RoboSimples[cont + 1];
+        for (int i = 0; i < cont; i++) {
+            lista[i] = listaDeRobos[i];
+        }
+
+        lista[cont] = this;
+
+        return lista;
+    }
+
+    // Verifica se a posicao ja é ocupada
+    private boolean verificarPosicao(int posX, int posY) {
+        for (RoboSimples robo : listaDeRobos) {
+            if ((robo.posicaoXAtual == posX) && (robo.posicaoYAtual == posY)) {
+                System.out.printf("Nao foi possivel mover o robo %s: Posicao (%d, %d) ja ocupada por robo %s!!!\n", this.nomeDoRobo, posX, posY, robo.nomeDoRobo);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean validaRobo(String nome, int posX, int posY, String novaDirecao){
+        if(validaNome(nome) && verificarPosicao(posX, posY) && validaDirecao(novaDirecao))
             return true;
         return false;
     }
@@ -53,44 +84,56 @@ public class RoboSimples {
     }
 
     public void move(int passos){
-        switch(direcaoAtual){
+        switch(direcaoAtual) {
             case "N":
-            posicaoYAtual += passos;
+            if (verificarPosicao(posicaoXAtual, posicaoYAtual + passos))
+                posicaoYAtual += passos;
             break;
 
             case "L":
-            posicaoXAtual += passos;
+            if (verificarPosicao(posicaoXAtual + passos, posicaoYAtual))
+                posicaoXAtual += passos;
             break;
 
             case "S":
-            posicaoYAtual -= passos;
+            if (verificarPosicao(posicaoXAtual, posicaoYAtual - passos))
+                posicaoYAtual -= passos;
             break;
-
+            
             case "O":
-            posicaoXAtual -= passos;
+            if (verificarPosicao(posicaoXAtual - passos, posicaoYAtual))
+                posicaoXAtual -= passos;
             break;
-
+            
             case "NL":
-            posicaoYAtual += passos;
-            posicaoXAtual += passos;
+            if (verificarPosicao(posicaoXAtual + passos, posicaoYAtual + passos)) {
+                posicaoYAtual += passos;
+                posicaoXAtual += passos;
+            }
             break;
-
+            
             case "NO":
-            posicaoYAtual += passos;
-            posicaoXAtual -= passos;
+            if (verificarPosicao(posicaoXAtual - passos, posicaoYAtual + passos)) {
+                posicaoYAtual += passos;
+                posicaoXAtual -= passos;
+            }
             break;
-
+            
             case "SL":
-            posicaoYAtual -= passos;
-            posicaoXAtual += passos;
+            if (verificarPosicao(posicaoXAtual + passos, posicaoYAtual - passos)) {
+                posicaoYAtual -= passos;
+                posicaoXAtual += passos;
+            }
             break;
-
+            
             case "SO":
-            posicaoYAtual -= passos;
-            posicaoXAtual -= passos;
+            if (verificarPosicao(posicaoXAtual - passos, posicaoYAtual - passos)) {
+                posicaoYAtual -= passos;
+                posicaoXAtual -= passos;
+            }
             break;
-        }
         
+        }        
     }
 
     public void mudaDirecao(String novaDirecao){
@@ -106,11 +149,16 @@ public class RoboSimples {
     }
 
     public static void main (String[] args) {
-        RoboSimples robo = new RoboSimples("EVE", 0, 0, "NL");
-
-        robo.move();
-        System.out.println(robo.toString());
-
+        RoboSimples robo1 = new RoboSimples("A", 0, 0, "NL");
+        RoboSimples robo2 = new RoboSimples("B", 1, 1, "NL");
+        RoboSimples robo3 = new RoboSimples("C", 1, 0, "N");
+        
+        System.out.println(robo1.toString());
+        System.out.println(robo2.toString());
+        System.out.println(robo3.toString() + "\n");
+        
+        robo1.move();
+        
+        System.out.println(robo1.toString());
     }
-
 }

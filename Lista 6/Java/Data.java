@@ -88,7 +88,7 @@ public class Data{
             }
         }
     }
-
+    /*
     public void setData(int primeiroDiaDoMesX) {
         verificarData(1, primeiroDiaDoMesX, ano);
         mes = primeiroDiaDoMesX;
@@ -103,6 +103,7 @@ public class Data{
             dia++;
         }
     }
+    */
     
     // Imprime data
     public void imprimirData() {
