@@ -73,7 +73,10 @@ public class Contato {
         LocalDate data = LocalDate.of(2023, 5, 8);
         Contato contato1 = new Contato("Fulano", "73999999999", data);
         Contato contato2 = new Contato("Ciclano", "73999999999", data);
-        Contato contato3 = new Contato("Beltrano", "73999999999", data);
+
+        contato1.imprimirContato();
+        contato2.imprimirContato();
+
         Contato.printNumContatos();
     }
     

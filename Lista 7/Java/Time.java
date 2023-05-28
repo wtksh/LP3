@@ -53,10 +53,10 @@ public class Time {
     }
     
     public String getTime(){
-        String res = String.format("%02d:%02d:%02d", this.hora, this.min, this.seg);
-        return res;
+        return String.format("%02d:%02d:%02d", this.hora, this.min, this.seg);
     }
 
+    // Setter
     public void setTime(int hora, int min, int seg){
         if (validateTime(hora, min, seg)) {
             this.hora = hora;
@@ -70,6 +70,7 @@ public class Time {
         }
     }
     
+    // Methods
     public void prnTime(){
         System.out.println(getTime());
     }

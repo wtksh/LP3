@@ -7,7 +7,7 @@ public class Data{
     private static final String[] diasDaSemana = {"Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"};
 
     Data(int dia, int mes, int ano) {
-        verificarData(dia, mes, ano);
+        validateData(dia, mes, ano);
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
@@ -21,7 +21,8 @@ public class Data{
         this(data.dia, data.mes, data.ano);
     }
 
-    private boolean verificarData(int dia, int mes, int ano) {
+    // Validações
+    private boolean validateData(int dia, int mes, int ano) {
         if (ano < 0)
             throw new IllegalArgumentException("Invalid year");
 
@@ -52,22 +53,22 @@ public class Data{
     
     // Setters
     public void setDia(int dia) {
-        verificarData(dia, mes, ano);
+        validateData(dia, mes, ano);
         this.dia = dia;
     }
     
     public void setMes(int mes) {
-        verificarData(dia, mes, ano);
+        validateData(dia, mes, ano);
         this.mes = mes;
     }
     
     public void setAno(int ano) {
-        verificarData(dia, mes, ano);
+        validateData(dia, mes, ano);
         this.ano = ano;
     }
 
     public void setData(Data data) {
-        verificarData(data.dia, data.mes, data.ano);
+        validateData(data.dia, data.mes, data.ano);
         dia = data.dia;
         mes = data.mes;
         ano = data.ano;
@@ -89,15 +90,17 @@ public class Data{
             }
         }
     }
+    
+    // Methods
     /*
     public void setData(int primeiroDiaDoMesX) {
-        verificarData(1, primeiroDiaDoMesX, ano);
+        validateData(1, primeiroDiaDoMesX, ano);
         mes = primeiroDiaDoMesX;
         dia = 1;
     }
 
     public void setData(int primeiraSegundaFeiraDoMesX) {
-        verificarData(1, primeiraSegundaFeiraDoMesX, ano);
+        validateData(1, primeiraSegundaFeiraDoMesX, ano);
         mes = primeiraSegundaFeiraDoMesX;
         dia = 1;
         while (this.dayOfWeek() != "Segunda-feira") {
@@ -106,12 +109,10 @@ public class Data{
     }
     */
     
-    // Imprime data
     public void imprimirData() {
         System.out.printf("%02d/%02d/%04d\n", dia, mes, ano);
     }
     
-    // Imprime data extenso
     public void imprimirDataExtenso() {
         System.out.printf("%02d de %s de %04d\n", dia, meses[mes - 1], ano);
     }
@@ -136,7 +137,7 @@ public class Data{
     }
 
     public int howManyDays(Data data) {
-        verificarData(data.dia, data.mes, data.ano);
+        validateData(data.dia, data.mes, data.ano);
         int sinal = 0;
         Data dataInicio, dataFim;
         if (data.isPrevious(this)){
@@ -224,7 +225,6 @@ public class Data{
     
     public static void main(String[] args){
         Data data1 = new Data(29, 5, 2023);
-        Data data2 = new Data(31, 5, 2023);
 
         System.out.println(howManyDaysUntilEndYear(data1));
         System.out.println(howManyDaysUntilNextMonth(data1));
