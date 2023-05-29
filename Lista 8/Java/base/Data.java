@@ -1,3 +1,5 @@
+package base;
+
 public class Data{
     private int dia;
     private int mes;
@@ -6,18 +8,18 @@ public class Data{
     private static final int[] diasPorMes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private static final String[] diasDaSemana = {"Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"};
 
-    Data(int dia, int mes, int ano) {
+    public Data(int dia, int mes, int ano) {
         validateData(dia, mes, ano);
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
     }
 
-    Data() {
+    public Data() {
         this(1, 1, 1970);
     }
 
-    Data(Data data) {
+    public Data(Data data) {
         this(data.dia, data.mes, data.ano);
     }
 
@@ -224,7 +226,6 @@ public class Data{
     
     public static void main(String[] args){
         Data data1 = new Data(29, 5, 2023);
-        Data data2 = new Data(31, 5, 2023);
 
         System.out.println(howManyDaysUntilEndYear(data1));
         System.out.println(howManyDaysUntilNextMonth(data1));

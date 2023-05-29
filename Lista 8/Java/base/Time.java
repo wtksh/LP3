@@ -1,28 +1,30 @@
+package base;
+
 public class Time {
     private int hora;
     private int min;
     private int seg;
 
-    Time(int hora, int min, int seg) {
+    public Time(int hora, int min, int seg) {
         validateTime(hora, min, seg);
         this.hora = hora;
         this.min = min;
         this.seg = seg;
     }
 
-    Time(int hora, int min) {
+    public Time(int hora, int min) {
         this(hora, min, 0);
     }
 
-    Time(int hora) {
+    public Time(int hora) {
         this(hora, 0);
     }
 
-    Time() {
+    public Time() {
         this(0);
     }
 
-    Time(Time time) {
+    public Time(Time time) {
         this(time.hora, time.min, time.seg);
     }
 
