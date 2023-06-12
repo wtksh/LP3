@@ -1,9 +1,9 @@
 
 public class LivroLivraria extends Livro {
-    private float preco;
+    private double preco;
     private int estoque;
 
-    public LivroLivraria(String titulo, String autor, int numeroPaginas, int anoPublicacao, float preco, int estoque) {
+    public LivroLivraria(String titulo, String autor, int numeroPaginas, int anoPublicacao, double preco, int estoque) {
         super(titulo, autor, numeroPaginas, anoPublicacao);
         this.preco = preco;
         this.estoque = estoque;
@@ -26,5 +26,16 @@ public class LivroLivraria extends Livro {
 
     public void sell() {
         estoque--;
+    }
+
+    public static void main(String[] args) {
+        LivroLivraria livroLivraria = new LivroLivraria("Title", "Author", 500, 2023, 19.90, 1);
+
+        System.out.println(livroLivraria);
+        System.out.println("IsOlder: " + livroLivraria.isOlder(2000));
+        System.out.println("IsAvailable: " + livroLivraria.isAvailable());
+        livroLivraria.sell();
+        System.out.println("Venda realizada");
+        System.out.println("IsAvailable: " + livroLivraria.isAvailable());
     }
 }
