@@ -40,5 +40,4 @@ public class LivroBiblioteca extends Livro{
         System.out.println("Emprestimo realizado");
         System.out.println("IsAvailable: " + livroBiblioteca.isAvailable());
     }
-
 }
